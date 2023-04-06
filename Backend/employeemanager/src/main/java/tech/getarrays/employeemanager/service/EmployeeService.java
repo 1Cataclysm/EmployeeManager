@@ -1,5 +1,6 @@
 package tech.getarrays.employeemanager.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tech.getarrays.employeemanager.exception.UserNotFindException;
@@ -36,6 +37,7 @@ public class EmployeeService {
                 .orElseThrow(() -> new UserNotFindException("User by id " + id + " was not found"));
     }
 
+    @Transactional
     public void deleteEmployee(Long id) {
         employeeRepo.deleteEmployeeById(id);
     }
