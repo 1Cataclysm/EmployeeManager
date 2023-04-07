@@ -17,7 +17,7 @@
 </nav>
 <div class="container" id="mainContainer">
     <div class="row">
-        <div *ngFor="let employee of employees" class="col-md-6 col-xl-3">
+        <div *ngFor="let employee of employees  | paginate: { itemsPerPage: pageSize, currentPage: currentPage }" class="col-md-6 col-xl-3">
             <div class="card m-b-30">
                 <div class="card-body row">
                     <div class="col-6">
@@ -41,6 +41,7 @@
             </div>
         </div>
     </div>
+    <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
 </div>
 
 <!-- Add Employee Modal -->
@@ -149,3 +150,4 @@
     </div>
   </div>
 </div>
+

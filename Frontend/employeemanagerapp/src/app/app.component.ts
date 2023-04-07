@@ -3,7 +3,14 @@ import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-
+import { Page } from '../models/page'
+/**
+ * 
+ * Lorsque j'ajoute un employé ça marche mais ca fait un truc bizarre (test pour voir)
+ * Variable pageSize = 50 faire en sorte que ce soit le nombre d'employé dans la base employees.length
+ * 
+ * 
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +20,10 @@ import { NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
   employees: Employee[] = [];
   editEmployee: Employee | undefined;
+
+  currentPage = 1;
+  pageSize = 8;
+
   title =""
   deleteEmployee: Employee | undefined;
   constructor(private employeeService: EmployeeService) {}
@@ -31,6 +42,7 @@ export class AppComponent implements OnInit {
       }
     )
   }
+
   public addEmployeeModal(addForm: NgForm) {
     console.log("ajout")
     document.getElementById("add-employee-form")?.click();

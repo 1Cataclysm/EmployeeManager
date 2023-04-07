@@ -11,6 +11,7 @@ body{
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 .w-60 {
     width: 60px;
@@ -34,4 +35,8 @@ h1, h2, h3, h4, h5, h6 {
 a {
     color: #707070;
     cursor: pointer;
+}
+.pagination-controls {
+    display: flex;
+    justify-content: center;
 }
