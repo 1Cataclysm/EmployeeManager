@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col-12 mb-3">
         <div class="input-group">
-          <button class="btn btn-outline-secondary" type="button" data-target="#addEmployeeModal" data-toggle="modal">Add Employee</button>
+          <button class="btn btn-primary" type="button" data-target="#addEmployeeModal" data-toggle="modal">Add Employee</button>
           <div class="input-group-append ml-auto">
             <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key"
               id="searchName" class="form-control" placeholder="Search employees..." required>
@@ -32,7 +32,7 @@
             </div>
             <div class="float-right btn-group btn-group-sm">
               <a (click)="openEditEmployeeModal(employee)" data-target="#editEmployeeModal"
-                class="btn btn-primary tooltips" data-placement="top" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                class="btn btn-info tooltips" data-placement="top" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
               <a (click)="openDeleteEmployeeModal(employee)" data-target="#deleteEmployeeModal"
                 class="btn btn-secondary tooltips" data-placement="top" data-toggle="modal"
                 data-original-title="Delete"><i class="fa fa-times"></i></a>
@@ -41,7 +41,13 @@
         </div>
       </div>
     </div>
-    <pagination-controls class="pagination-controls" (pageChange)="currentPage = $event"></pagination-controls>
+    <pagination-controls 
+        class="pagination-controls pagination" 
+        (pageChange)="currentPage = $event"
+        previousLabel="Prev"
+        nextLabel="Next">
+    </pagination-controls>
+    
   </div>
   
   <!-- Add Employee Modal -->

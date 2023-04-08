@@ -18,14 +18,14 @@
           <div class="card-body">
                 <div class="d-flex justify-content-center align-items-center">
                     <a (click)="openEditEmployeeModal(employee)" data-target="#editEmployeeModal"
-                      class="btn btn-primary tooltips mx-5" data-placement="top" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                      class="btn btn-info tooltips mx-5" data-placement="top" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                     <a (click)="openDeleteEmployeeModal(employee)" data-target="#deleteEmployeeModal"
                       class="btn btn-secondary tooltips mx-5" data-placement="top" data-toggle="modal"
                       data-original-title="Delete"><i class="fa fa-times"></i></a>
                 </div>
           </div>
         </div>
-        <button class="w-100 btn btn-outline-secondary" type="button" [routerLink]="['/employees']">
+        <button class="w-100 btn btn-primary" type="button" [routerLink]="['/employees']">
             Back
         </button>
       </div>
@@ -33,7 +33,7 @@
         <div class="card m-b-30">
           <div class="card-header card-description-title d-flex justify-content-between align-items-center">
             <h5 class="card-title mb-0">Job description</h5>
-            <button class="btn btn-outline-secondary modify-description-title" data-toggle="modal" data-target="#modifyDescription" data-placement="top" type="button" >Modify description</button>
+            <button class="btn btn-secondary modify-description-title" data-toggle="modal" data-target="#modifyDescription" data-placement="top" type="button" >Modify description</button>
           </div>
           <div class="card-body">
             {{ employee.jobDescription }}

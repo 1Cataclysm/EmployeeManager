@@ -9,6 +9,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeesComponent } from './employees/employees.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 const routes: Routes = [
   { path: '', redirectTo: '/employees', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
     EmployeeDetailsComponent,
   ],
   imports: [
+    ModalModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
