@@ -11,8 +11,7 @@
   <div class="row">
     <div class="col-12 mb-3">
       <div class="input-group">
-        <button class="btn btn-outline-secondary" type="button" data-target="#addEmployeeModal" data-toggle="modal">Add
-          Employee</button>
+        <button class="btn btn-outline-secondary" type="button" data-target="#addEmployeeModal" data-toggle="modal">Add Employee</button>
         <div class="input-group-append ml-auto">
           <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel name="key"
             id="searchName" class="form-control" placeholder="Search employees..." required>
@@ -24,7 +23,7 @@
       <div class="card m-b-30">
         <div class="card-body row">
           <div class="col-6">
-            <a href=""><img src="{{ employee?.imageUrl }}" alt="" class="img-fluid rounded-circle w-60"></a>
+            <a><img src="{{ employee?.imageUrl }}" alt="" class="img-fluid rounded-circle w-60"></a>
           </div>
           <div class="col-6 card-title align-self-center mb-0">
             <h5>{{ employee?.name }}</h5>
@@ -32,15 +31,13 @@
           </div>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{ employee?.email
-              }}</a></li>
+          <li class="list-group-item"><i class="fa fa-envelope float-right"></i>Email : <a href="#">{{ employee?.email }}</a></li>
           <li class="list-group-item"><i class="fa fa-phone float-right"></i>Phone : {{ employee?.phone }}</li>
         </ul>
         <div class="card-body">
           <div class="float-right btn-group btn-group-sm">
             <a (click)="openEditEmployeeModal(employee)" data-target="#editEmployeeModal"
-              class="btn btn-primary tooltips" data-placement="top" data-toggle="modal" data-original-title="Edit"><i
-                class="fa fa-pencil"></i> </a>
+              class="btn btn-primary tooltips" data-placement="top" data-toggle="modal" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
             <a (click)="openDeleteEmployeeModal(employee)" data-target="#deleteEmployeeModal"
               class="btn btn-secondary tooltips" data-placement="top" data-toggle="modal"
               data-original-title="Delete"><i class="fa fa-times"></i></a>
