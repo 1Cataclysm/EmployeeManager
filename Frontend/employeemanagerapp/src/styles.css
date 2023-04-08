@@ -58,3 +58,11 @@ a:hover svg {
     margin-left: auto;
   }
   
+
+  .modal.fade .modal-dialog {
+    transform: translateY(-50px);
+    transition: all 0.3s ease-out;
+}
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+}
