@@ -72,3 +72,20 @@ a:hover svg {
 .modal.fade.show .modal-dialog {
     transform: translateY(0);
 }
+
+.row {
+  margin-top: 20px;
+}
+
+.card-description-title {
+  background-color: #dddddd;
+}
+
+.job-description-textarea {
+  height: 300px;
+  width: 450px;
+}
+
+.btn {
+  color: black;
+}
