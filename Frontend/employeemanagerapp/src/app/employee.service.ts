@@ -14,10 +14,6 @@ export class EmployeeService {
         return this.http.get<Employee[]>(`${this.apiServerUrl}/employee/all`);
     }
 
-    public getEmployeeById(id: number): Observable<any> {
-        return this.http.get<Employee>(`${this.apiServerUrl}/employee/find/${id}`);
-    }
-
     public addEmployee(employee: Employee): Observable<any> {
         return this.http.post<Employee>(`${this.apiServerUrl}/employee/add`, employee);
     }

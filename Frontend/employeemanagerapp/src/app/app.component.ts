@@ -3,14 +3,7 @@ import { Employee } from './employee';
 import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
-import { Page } from '../models/page'
-/**
- * 
- * Lorsque j'ajoute un employé ça marche mais ca fait un truc bizarre (test pour voir)
- * Variable pageSize = 50 faire en sorte que ce soit le nombre d'employé dans la base employees.length
- * 
- * 
- */
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,7 +13,8 @@ import { Page } from '../models/page'
 export class AppComponent implements OnInit {
   employees: Employee[] = [];
   editEmployee: Employee | undefined;
-
+  employee!: Employee;
+  
   currentPage = 1;
   pageSize = 8;
 
@@ -31,7 +25,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getEmployees();
   }
-
+  
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
@@ -95,6 +89,8 @@ export class AppComponent implements OnInit {
 
   public searchEmployees(key: string) {
     const result: Employee[] = [];
+    console.log("changer")
+    this.currentPage = 1;
     for (const employee of this.employees) {
       if (employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
       || employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
@@ -104,7 +100,7 @@ export class AppComponent implements OnInit {
       }
     }
     this.employees = result;
-    if (result.length === 0 || !key) {
+    if (key.length === 0 || !key) {
       this.getEmployees();
     }
   }

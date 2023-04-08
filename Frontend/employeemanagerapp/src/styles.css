@@ -40,3 +40,21 @@ a {
     display: flex;
     justify-content: center;
 }
+a:hover svg {
+    border: 1px solid rgb(112, 112, 112);
+    box-shadow: inset;
+}
+.first-part {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  button[data-target="#addEmployeeModal"] {
+    margin-right: auto;
+  }
+  
+  .form-inline.my-2.my-lg-0 {
+    margin-left: auto;
+  }
+  
