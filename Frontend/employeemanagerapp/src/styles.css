@@ -86,3 +86,7 @@ a:hover svg {
   width: 450px;
 }
 
+.page-item.active .page-link {
+  background-color: rgb(105, 182, 212);
+  border-color: rgb(105, 182, 212);
+}
