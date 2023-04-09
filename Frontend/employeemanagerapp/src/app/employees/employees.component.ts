@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Employee } from '../employee';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
@@ -12,10 +12,10 @@ import { EmployeeService } from '../employee.service';
 export class EmployeesComponent {
   employees: Employee[] = [];
   editEmployee: Employee | undefined;
-  employee!: Employee;
-  
-  currentPage = 1;
-  pageSize = 8;
+
+  currentPage: number = 1;
+  pageSize: number = 8;
+  totalPages: number = 0;
 
   title =""
   deleteEmployee: Employee | undefined;
@@ -24,16 +24,28 @@ export class EmployeesComponent {
   ngOnInit() {
     this.getEmployees();
   }
-  
+
   public getEmployees(): void {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
         this.employees = response;
+        this.totalPages = Math.ceil(this.employees.length / this.pageSize);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
       }
-    )
+    );
+  }
+  public getPages(): number[] {
+    const pages: number[] = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pages.push(i);
+    }
+    return pages;
+  }
+
+  public setCurrentPage(page: number): void {
+    this.currentPage = page;
   }
 
   public addEmployeeModal(addForm: NgForm) {
@@ -103,4 +115,5 @@ export class EmployeesComponent {
       this.getEmployees();
     }
   }
+
 }
