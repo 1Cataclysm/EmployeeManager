@@ -12,7 +12,7 @@ import { EmployeeService } from '../employee.service';
 export class EmployeesComponent {
   employees: Employee[] = [];
   editEmployee: Employee | undefined;
-
+  employeesToSearch: Employee[] = [];
   currentPage: number = 1;
   pageSize: number = 8;
   totalPages: number = 0;
@@ -29,6 +29,7 @@ export class EmployeesComponent {
     this.employeeService.getEmployees().subscribe(
       (response: Employee[]) => {
         this.employees = response;
+        this.employeesToSearch = response;
         this.totalPages = Math.ceil(this.employees.length / this.pageSize);
       },
       (error: HttpErrorResponse) => {
@@ -100,18 +101,25 @@ export class EmployeesComponent {
 
   public searchEmployees(key: string) {
     const result: Employee[] = [];
-    console.log("changer")
-    this.currentPage = 1;
-    for (const employee of this.employees) {
+  
+    console.log("changer1 : " + this.employees.length);
+    this.setCurrentPage(1);
+  
+    // Filtrer la liste des employés en fonction de la valeur de la barre de recherche
+    for (const employee of this.employeesToSearch) {
       if (employee.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      || employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        || employee.email.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.phone.toLowerCase().indexOf(key.toLowerCase()) !== -1
+        || employee.jobTitle.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         result.push(employee);
       }
     }
+  
+    console.log("changer 2 ");
     this.employees = result;
-    if (key.length === 0 || !key) {
+    this.totalPages = Math.ceil(this.employees.length / this.pageSize);
+  
+    if (!key.trim()) {
       this.getEmployees();
     }
   }
